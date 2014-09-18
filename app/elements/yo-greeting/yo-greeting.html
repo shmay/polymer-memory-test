@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="yo-greeting" attributes="">
+  <template>
+    <link rel="stylesheet" href="yo-greeting.css">
+    <h1>{{ greeting }}, {{ greeting }}!</h1>
+
+    <p on-tap='{{tapBtn}}' id='btn'>Click to remove / instantiate / insert yo-list</p>
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        greeting : '\'Allo',
+        tapBtn: function() {
+          var list = new YoList;
+          parent = this.parentNode;
+          parent.querySelector('yo-list').remove();
+          parent.appendChild(list);
+
+          console.log('refreshed');
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>
